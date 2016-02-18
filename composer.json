@@ -1,0 +1,21 @@
+{
+	"authors": [
+        {
+            "name": "Marina Shynkarenko",
+            "email": "shynkarenko.m@gmail.com",
+            "homepage": "https://github.com/marinaua",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Producto\\": "app/"
+        }
+    },
+    "require": {
+		"php": ">=5.5.9",
+        "symfony/console": "2.8.*|3.0.*",
+		"monolog/monolog": "^1.17"
+    },
+    "minimum-stability": "dev"
+}
