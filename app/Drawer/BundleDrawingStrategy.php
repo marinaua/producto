@@ -1,10 +1,17 @@
 <?php
 namespace Producto\Drawer;
 
+use Producto\Entity\Bundle;
 
 class BundleDrawingStrategy extends AbstractDrawingStrategy
 {
-
+    /**
+     * Build table body
+     *
+     * @param Bundle $item
+     *
+     * @return array
+     */
     protected function buildBody($item)
     {
         $body[] = str_repeat(self::SPACE, self::SKU_LEN - strlen($item->getSku()) - 1)

@@ -123,7 +123,7 @@ class ProcessedData
     }
 
     /**
-     * @param $lineNumber
+     * @param int $lineNumber
      *
      * @return EntityInterface
      * @throws \Exception

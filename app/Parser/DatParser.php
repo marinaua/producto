@@ -15,7 +15,7 @@ class DatParser extends AbstractParser
     const REQUIRED_PRODUCT_DATA_COUNT = 3;
     const MIN_REQUIRED_BUNDLE_DATA_COUNT = 2;
 
-    /** @var  Logger */
+    /** @var Logger */
     private $logger;
 
     public function __construct($logger)
@@ -24,12 +24,7 @@ class DatParser extends AbstractParser
     }
 
     /**
-     * Parse file
-     *
-     * @param $filePath
-     *
-     * @return array
-     * @throws FileNotFoundException
+     * {@inheritdoc}
      */
     public function parse($filePath)
     {
@@ -64,11 +59,11 @@ class DatParser extends AbstractParser
     /**
      * Check line format
      *
-     * @param $lineData
+     * @param array $lineData
      *
      * @return bool
      */
-    private function isLineFormatValid($lineData)
+    private function isLineFormatValid(array $lineData)
     {
         if (count($lineData) != self::REQUIRED_LINE_PARTS_COUNT
             || false === DataTypes::isAvailableType($lineData[self::TYPE_ID])) {

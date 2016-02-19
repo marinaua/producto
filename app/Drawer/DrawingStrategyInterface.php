@@ -1,11 +1,14 @@
 <?php
 namespace Producto\Drawer;
 
-
-use Producto\Entity\EntityInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-
 interface DrawingStrategyInterface
 {
+    /**
+     * Build table
+     *
+     * @param @param EntityInterface|string $item
+     *
+     * @return array
+     */
     public function build($item);
 }

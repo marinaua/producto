@@ -1,7 +1,7 @@
 <?php
 namespace Producto\Drawer;
 
-
+use Producto\Entity\EntityInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class Drawer
@@ -15,7 +15,9 @@ class Drawer
     }
 
     /**
-     * @param $item
+     * Build table and draw it into output
+     *
+     * @param EntityInterface|string $item
      * @param OutputInterface $output
      */
     public function draw($item, OutputInterface $output)

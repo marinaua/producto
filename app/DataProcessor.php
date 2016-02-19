@@ -1,14 +1,16 @@
 <?php
 namespace Producto;
 
-
 use Producto\Entity\Bundle;
 use Producto\Entity\Product;
 
 class DataProcessor
 {
     /**
+     * Process data
+     *
      * @param array $data
+     *
      * @return ProcessedData
      */
     public function process(array $data)
@@ -20,7 +22,7 @@ class DataProcessor
 
         $itemsList = $data['itemsList'];
 
-        foreach($itemsList as $itemSku) {
+        foreach ($itemsList as $itemSku) {
             if (array_key_exists($itemSku, $products)) {
                 $item = $this->prepareProductItem($itemSku, $products, $processedData);
             } else {
@@ -34,13 +36,15 @@ class DataProcessor
     }
 
     /**
+     * Prepare product item
+     *
      * @param string $itemSku
      * @param array $products
      * @param ProcessedData $processedData
      *
      * @return Product
      */
-    private function prepareProductItem($itemSku, $products, ProcessedData $processedData)
+    private function prepareProductItem($itemSku, array $products, ProcessedData $processedData)
     {
         $item = new Product();
         $item->setSku($itemSku);
@@ -62,6 +66,8 @@ class DataProcessor
     }
 
     /**
+     * Prepare bundle item
+     *
      * @param string $itemSku
      * @param array $bundles
      * @param array $products
@@ -69,7 +75,7 @@ class DataProcessor
      *
      * @return Bundle
      */
-    private function prepareBundleItem($itemSku, $bundles, $products, ProcessedData $processedData)
+    private function prepareBundleItem($itemSku, array $bundles, array $products, ProcessedData $processedData)
     {
         $item = new Bundle();
         $item->setSku($itemSku);

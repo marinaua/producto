@@ -1,6 +1,7 @@
 <?php
 namespace Producto\Drawer;
 
+use Producto\Entity\EntityInterface;
 
 abstract class AbstractDrawingStrategy implements DrawingStrategyInterface
 {
@@ -17,15 +18,32 @@ abstract class AbstractDrawingStrategy implements DrawingStrategyInterface
     const NAME = "Name";
     const PRICE = "Price";
 
+    /**
+     * Build table body
+     *
+     * @param EntityInterface|string $item
+     *
+     * @return array
+     */
     abstract protected function buildBody($item);
 
+    /**
+     * {@inheritdoc}
+     */
     public function build($item)
     {
         return array_merge(
-            $this->buildHeader(), $this->buildBody($item), $this->buildFooter()
+            $this->buildHeader(),
+            $this->buildBody($item),
+            $this->buildFooter()
         );
     }
 
+    /**
+     * Build table header
+     *
+     * @return array
+     */
     protected function buildHeader()
     {
         $header[] = $this->getLine();
@@ -35,11 +53,21 @@ abstract class AbstractDrawingStrategy implements DrawingStrategyInterface
         return $header;
     }
 
+    /**
+     * Build table footer
+     *
+     * @return array
+     */
     protected function buildFooter()
     {
         return [$this->getLine()];
     }
 
+    /**
+     * Get ASCII table line
+     *
+     * @return string
+     */
     protected function getLine()
     {
         return str_repeat(self::H_LINE, self::SKU_LEN)
@@ -49,6 +77,11 @@ abstract class AbstractDrawingStrategy implements DrawingStrategyInterface
             . str_repeat(self::H_LINE, self::PRICE_LEN);
     }
 
+    /**
+     * Get titles line
+     *
+     * @return string
+     */
     protected function getTitles()
     {
         return str_repeat(self::SPACE, self::SKU_LEN - strlen(self::SKU) - 1)

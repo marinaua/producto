@@ -1,7 +1,6 @@
 <?php
 namespace Producto\Entity;
 
-
 class Bundle implements EntityInterface
 {
     /** @var  string */
@@ -16,6 +15,9 @@ class Bundle implements EntityInterface
     /** @var  boolean */
     private $available;
 
+    /**
+     * @param array $products
+     */
     public function setProducts(array $products)
     {
         $this->products = $products;

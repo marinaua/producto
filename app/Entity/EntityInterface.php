@@ -1,5 +1,7 @@
 <?php
 namespace Producto\Entity;
 
+interface EntityInterface
+{
 
-interface EntityInterface {}
+}

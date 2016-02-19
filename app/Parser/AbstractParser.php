@@ -1,5 +1,7 @@
 <?php
 namespace Producto\Parser;
 
+abstract class AbstractParser implements ParserInterface
+{
 
-abstract class AbstractParser implements ParserInterface {}
+}

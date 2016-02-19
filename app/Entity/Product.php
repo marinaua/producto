@@ -1,7 +1,6 @@
 <?php
 namespace Producto\Entity;
 
-
 class Product implements EntityInterface
 {
     const NAME_ID = 0;

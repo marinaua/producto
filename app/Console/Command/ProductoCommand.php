@@ -8,7 +8,6 @@ use Producto\Drawer\Drawer;
 use Producto\Drawer\ErrorDrawingStrategy;
 use Producto\Drawer\ProductDrawingStrategy;
 use Producto\Entity\Product;
-use Producto\Exceptions\InvalidItemException;
 use Producto\Parser\DatParser;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -21,6 +20,9 @@ use Symfony\Component\Console\Question\Question;
 
 class ProductoCommand extends Command
 {
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
@@ -33,6 +35,9 @@ class ProductoCommand extends Command
             );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $applicationId = substr(md5((new \DateTime())->getTimestamp()), -5);
@@ -56,7 +61,7 @@ class ProductoCommand extends Command
         $helper = $this->getHelper('question');
         $question = new Question("Enter product number: ");
 
-        while(true) {
+        while (true) {
             $userInput = $helper->ask($input, $output, $question);
 
             if ($userInput === ':q') {
@@ -128,7 +133,7 @@ class ProductoCommand extends Command
             } else {
                 $drawer = new Drawer(new BundleDrawingStrategy());
             }
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $drawer = new Drawer(new ErrorDrawingStrategy());
 
             $item = $e->getMessage();
